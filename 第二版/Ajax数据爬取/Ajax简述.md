@@ -1,23 +1,9 @@
-# 6.1 什么是 Ajax
+# Ajax
+Asynchronous JavaScript and XML 异步的JavaScript和XML 
 
-Ajax，全称为 Asynchronous JavaScript and XML，即异步的 JavaScript 和 XML。它不是一门编程语言，而是利用 JavaScript 在保证页面不被刷新、页面链接不改变的情况下与服务器交换数据并更新部分网页的技术。
+保证页面不被刷新，页面链接不改变的情况下与服务器交换数据并更新部分网页端技术
 
-对于传统的网页，如果想更新其内容，那么必须要刷新整个页面，但有了 Ajax，便可以在页面不被全部刷新的情况下更新其内容。在这个过程中，页面实际上是在后台与服务器进行了数据交互，获取到数据之后，再利用 JavaScript 改变网页，这样网页内容就会更新了。
-
-可以到 W3School 上体验几个 Demo 来感受一下：[http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_send.asp](http://www.w3school.com.cn/ajax/ajax_xmlhttprequest_send.asp)。
-
-### 1. 实例引入
-
-浏览网页的时候，我们会发现很多网页都有下滑查看更多的选项。比如，拿微博来说，以我的主页为例：[https://m.weibo.cn/u/2830678474](https://m.weibo.cn/u/2830678474)，切换到微博页面，一直下滑，可以发现下滑几个微博之后，再向下就没有了，转而会出现一个加载的动画，不一会儿下方就继续出现了新的微博内容，这个过程其实就是 Ajax 加载的过程，如图 6-1 所示。
-
-![](./assets/6-1.png)
-
-图 6-1 页面加载过程
-
-我们注意到页面其实并没有整个刷新，也就意味着页面的链接没有变化，但是网页中却多了新内容，也就是后面刷出来的新微博。这就是通过 Ajax 获取新数据并呈现的过程。
-
-### 2. 基本原理
-
+## 基本原理
 初步了解了 Ajax 之后，我们再来详细了解它的基本原理。发送 Ajax 请求到网页更新的这个过程可以简单分为以下 3 步：
 
 * 发送请求
@@ -34,13 +20,10 @@ Ajax，全称为 Asynchronous JavaScript and XML，即异步的 JavaScript 和 X
 var xmlhttp;
 if (window.XMLHttpRequest) {
     //code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-    } else {//code for IE6, IE5
+    xmlhttp=new XMLHttpRequest();} else {//code for IE6, IE5
     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 }
-xmlhttp.onreadystatechange=function() {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-        document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+xmlhttp.onreadystatechange=function() {if (xmlhttp.readyState==4 && xmlhttp.status==200) {document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
     }
 }
 xmlhttp.open("POST","/ajax/",true);
@@ -62,7 +45,3 @@ JavaScript 有改变网页内容的能力，解析完响应内容之后，就可
 我们观察到，这 3 个步骤其实都是由 JavaScript 完成的，它完成了整个请求、解析和渲染的过程。
 
 再回想微博的下拉刷新，这其实就是 JavaScript 向服务器发送了一个 Ajax 请求，然后获取新的微博数据，将其解析，并将其渲染在网页中。
-
-因此，我们知道，真实的数据其实都是一次次 Ajax 请求得到的，如果想要抓取这些数据，需要知道这些请求到底是怎么发送的，发往哪里，发了哪些参数。如果我们知道了这些，不就可以用 Python 模拟这个发送操作，获取到其中的结果了吗？
-
-在下一节中，我们就来了解哪里可以看到这些后台 Ajax 操作，了解它到底是怎么发送的，发送了什么参数。

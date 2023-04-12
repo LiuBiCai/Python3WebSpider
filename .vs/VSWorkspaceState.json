@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\第二版\\文件存储"
+    "\\第二版",
+    "\\第二版\\Ajax数据爬取",
+    "\\第二版\\异步爬虫",
+    "\\第二版\\数据存储"
   ],
+  "SelectedNode": "\\第二版\\异步爬虫\\协程.ipynb",
   "PreviewInSolutionExplorer": false
 }
